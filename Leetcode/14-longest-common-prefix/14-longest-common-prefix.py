@@ -1,22 +1,11 @@
-class Solution(object):
-    def longestCommonPrefix(self, strs):
-        """
-        :type strs: List[str]
-        :rtype: str
-        """
+class Solution:
+    def longestCommonPrefix(self, strs: List[str]) -> str:
         result = ""
-        for i in range(len(strs[0])):
-            for s in strs:
-                if i == len(s) or strs[0][i] != s[i]:
+        firstStr = strs[0]
+        for i, c in enumerate(firstStr):
+            for val in strs:
+                if i == len(val) or c != val[i]:
                     return result
-            result += strs[0][i]
+            result += c
         return result
-
-        # Time complexity: O(len(min(strs)*n))
-        # Space complexity: O(1)
-    def __init__(self):
-      print("answer 1: " + self.longestCommonPrefix(["flower","flow","flight"]))
-      print("answer 2: " +self.longestCommonPrefix(["dog","racecar","car"]))
-      print("answer 3: " +self.longestCommonPrefix(["dograce","dogracecar","dogracecare"]))
-
-obj = Solution();
+        # O(minLengthStrAmong(strs) * n)
